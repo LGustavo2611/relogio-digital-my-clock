@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Kanit", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    overflow: auto;
+    background: linear-gradient(
+        135deg, 
+        #5f43b3, /* Um roxo suave */
+        #dc1f1f, /* Um vermelho vibrante, mas não agressivo */
+        #e39b2a, /* Um laranja dourado */
+        #5f43b3  /* Retorna ao roxo */
+    );
+    background-size: 400% 400%;
+    animation: background-gradient 20s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Garante que as ondas não causem barra de rolagem */
+    margin: 0;
+}
+
+/*
+ Animação do gradiente de fundo
+ */
+@keyframes background-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/*
+ Ondas sutis e com animação longa
+ */
+.wave {
+    background: rgba(255, 255, 255, 0.2); /* Transparência de 20% */
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 20em; /* Altura mais ou menos no meio */
+    animation: wave-animation 30s linear infinite; /* Animação lenta */
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5; /* Opacidade na média */
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.5em; /* Distância ajustada */
+    animation: wave-animation 35s linear reverse infinite;
+    opacity: 0.5; /* Opacidade na média */
+}
+
+.wave:nth-of-type(3) {
+    bottom: -3em; /* Distância ajustada */
+    animation: wave-animation 40s -1s infinite;
+    opacity: 0.3; /* Opacidade mais baixa */
+}
+
+/*
+ Animação das ondas para um movimento bem suave
+ */
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0) translateZ(0) scaleY(1);
+    }
+    50% {
+        transform: translateX(-50%) translateZ(0) scaleY(0.5); /* Movimento sutil */
+    }
+    100% {
+        transform: translateX(0) translateZ(0) scaleY(1);
+    }
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 200px;
+    width: 600px;
+    background: transparent;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+}
+
+.clock div {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 5, 5, 0.6);
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, .5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+}
+
+.clock span {
+    font-size: 60px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 5px;
+}
+
+.clock .time {
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+}
